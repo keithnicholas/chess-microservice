@@ -3,9 +3,9 @@ package com.baneff.gameroom.Game;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +19,48 @@ public class GameService {
     public GameService(GameRepository gameRepository) {
         this.gameRepository = gameRepository;
     }
+
+
+
+
+
+
+
+
+
+
+
+    public Game createGame(String p1, String p2) {
+        Game newGame = new Game(p1,p2);
+        Game saved = gameRepository.save(newGame);
+
+        try {
+            Thread.sleep(5_000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        saved.setGameEnd(LocalDateTime.now());
+        return gameRepository.save(saved);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public List<Game> getAllGames(){
         return gameRepository.findAll();

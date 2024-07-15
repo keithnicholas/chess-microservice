@@ -1,10 +1,7 @@
 package com.baneff.gameroom.Game;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,13 +10,21 @@ import java.util.List;
 public class GameController {
 
     private final GameRepository gameRepository;
+    private final GameService gameService;
 
-    public GameController(GameRepository gameRepository) {
+    public GameController(GameRepository gameRepository, GameService gameService) {
         this.gameRepository = gameRepository;
+        this.gameService = gameService;
     }
 
     @GetMapping("/igat/{idPlayer1}")
     public List<Game> findByidPlayer1(@PathVariable String idPlayer1){
         return gameRepository.findByidPlayer1(idPlayer1);
     }
+
+    @GetMapping("/{p1}/{p2}")
+    public Game createGame(@PathVariable String p1, @PathVariable String p2){
+        return gameService.createGame(p1,p2);
+    }
+
 }
