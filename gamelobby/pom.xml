@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.baneff</groupId>
-	<artifactId>gameroom</artifactId>
+	<artifactId>gamelobby</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gameroom</name>
 	<description>Game Room</description>
