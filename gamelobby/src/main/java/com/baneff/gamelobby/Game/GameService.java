@@ -3,14 +3,9 @@ package com.baneff.gamelobby.Game;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 @Service
@@ -28,6 +23,7 @@ public class GameService {
     }
 
     public Game createGame(String p1, String p2) {
+        LOGGER.info("Creating game with p1:{}, p2:{}", p1, p2);
         Game newGame = new Game(p1,p2);
         newGame.setGameEnd(null);
         Game saved = gameRepository.save(newGame);
@@ -40,8 +36,5 @@ public class GameService {
         return gameRepository.findAll();
     }
 
-    public Optional<Game> getGameByPlayer(){
-        return null;
-    }
 
 }

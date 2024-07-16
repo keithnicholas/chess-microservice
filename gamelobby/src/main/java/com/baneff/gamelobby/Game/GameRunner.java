@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.concurrent.CompletableFuture;
 
-import static java.util.concurrent.CompletableFuture.completedFuture;
-
 @Component
 public class GameRunner {
     private static final Logger LOGGER = LoggerFactory.getLogger(GameRunner.class);
@@ -19,7 +17,8 @@ public class GameRunner {
         try {
             Thread.sleep(5_000);
         } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
+            LOGGER.info("Game has crashed. {}", e.getLocalizedMessage());
+            Thread.currentThread().interrupt();
             return CompletableFuture.completedFuture(false);
         }
         theGame.setGameEnd(LocalDateTime.now());
