@@ -1,12 +1,13 @@
-package com.baneff.gameroom.Game;
+package com.baneff.gamelobby.Game;
 
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Async;
 
 import java.time.LocalDateTime;
 
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Game {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(Game.class);
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,9 +47,10 @@ public class Game {
         this.gameStart = gameStart;
     }
 
-
     public Game(String idPlayer1, String idPlayer2) {
         this.idPlayer1 = idPlayer1;
         this.idPlayer2 = idPlayer2;
     }
+
+
 }

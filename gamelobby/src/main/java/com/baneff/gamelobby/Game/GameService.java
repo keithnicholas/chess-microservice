@@ -1,13 +1,17 @@
-package com.baneff.gameroom.Game;
+package com.baneff.gamelobby.Game;
 
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 @Service
 public class GameService {
@@ -15,52 +19,22 @@ public class GameService {
     private static final Logger LOGGER = LoggerFactory.getLogger(GameService.class);
 
     private final GameRepository gameRepository;
+    private final GameRunner gameRunner;
 
-    public GameService(GameRepository gameRepository) {
+
+    public GameService(GameRepository gameRepository, GameRunner gameRunner) {
         this.gameRepository = gameRepository;
+        this.gameRunner = gameRunner;
     }
-
-
-
-
-
-
-
-
-
-
 
     public Game createGame(String p1, String p2) {
         Game newGame = new Game(p1,p2);
+        newGame.setGameEnd(null);
         Game saved = gameRepository.save(newGame);
 
-        try {
-            Thread.sleep(5_000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
-        saved.setGameEnd(LocalDateTime.now());
-        return gameRepository.save(saved);
-
+        Future<Boolean> runTask = gameRunner.doGameAsync(saved, gameRepository);
+        return newGame;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public List<Game> getAllGames(){
         return gameRepository.findAll();
@@ -69,6 +43,5 @@ public class GameService {
     public Optional<Game> getGameByPlayer(){
         return null;
     }
-
 
 }

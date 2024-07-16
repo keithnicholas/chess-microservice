@@ -11,8 +11,8 @@
 	<groupId>com.baneff</groupId>
 	<artifactId>gamelobby</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>gameroom</name>
-	<description>Game Room</description>
+	<name>gamelobby</name>
+	<description>Game Lobby</description>
 	<url/>
 	<licenses>
 		<license/>

@@ -1,4 +1,4 @@
-package com.baneff.gameroom.Game;
+package com.baneff.gamelobby.Game;
 
 
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    @GetMapping("/igat/{idPlayer1}")
+    @GetMapping("/searchp1/{idPlayer1}")
     public List<Game> findByidPlayer1(@PathVariable String idPlayer1){
         return gameRepository.findByidPlayer1(idPlayer1);
     }
