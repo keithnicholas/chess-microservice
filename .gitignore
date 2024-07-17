@@ -40,3 +40,5 @@ application.properties
 
 gamelobby/src/main/java/com/baneff/gamelobby/Game/GameIgnoreMe.java
 gamelobby/src/main/resources/application.properties
+
+/gamelobby/src/main/resources/env2.properties
