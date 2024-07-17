@@ -32,6 +32,7 @@ build/
 ### VS Code ###
 .vscode/
 
+#this shite dont work
 
-**/**.properties
-.properties
+**/.properties
+application.properties
