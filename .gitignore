@@ -39,3 +39,4 @@ application.properties
 .properties
 
 gamelobby/src/main/java/com/baneff/gamelobby/Game/GameIgnoreMe.java
+gamelobby/src/main/resources/application.properties
