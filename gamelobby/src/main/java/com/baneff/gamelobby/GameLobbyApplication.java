@@ -2,6 +2,8 @@ package com.baneff.gamelobby;
 
 import com.baneff.gamelobby.Game.Game;
 import com.baneff.gamelobby.Game.GameRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,13 +18,22 @@ import java.time.LocalDateTime;
 @SpringBootApplication
 @EnableAsync
 public class GameLobbyApplication {
+	private static final Logger LOGGER = LoggerFactory.getLogger(GameLobbyApplication.class);
+	@Autowired
+	GameRepository gameRepository;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(GameLobbyApplication.class, args);
+
+		/*
+			Hardcoded for now to display swagger endpoint
+			Change log message later to
+			extract the url from application.properties via @Configuration
+		*/
+		LOGGER.info("Swagger UI exposed at {}", "/swagger-ui/swag/wagger");
 	}
 
-	@Autowired
-	GameRepository gameRepository;
 
 	@Bean
 	public CommandLineRunner startup() {
@@ -32,8 +43,7 @@ public class GameLobbyApplication {
 					new Game("baneff", "igat", "keith", LocalDateTime.now())
 			);
 
-			System.out.println("Database initialized!");
-
+			LOGGER.info("Database initialized!");
 		};
 	}
 
