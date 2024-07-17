@@ -32,13 +32,3 @@ build/
 ### VS Code ###
 .vscode/
 
-#this shite dont work
-
-**/.properties
-application.properties
-.properties
-
-gamelobby/src/main/java/com/baneff/gamelobby/Game/GameIgnoreMe.java
-gamelobby/src/main/resources/application.properties
-
-/gamelobby/src/main/resources/env2.properties
