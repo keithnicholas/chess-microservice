@@ -7,7 +7,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/game")
-public class GameController {
+class GameController {
 
     private final GameRepository gameRepository;
     private final GameService gameService;
@@ -15,6 +15,11 @@ public class GameController {
     public GameController(GameRepository gameRepository, GameService gameService) {
         this.gameRepository = gameRepository;
         this.gameService = gameService;
+    }
+
+    @GetMapping("/")
+    public List<Game> listGames(){
+        return gameRepository.findAll();
     }
 
     @GetMapping("/searchp1/{idPlayer1}")

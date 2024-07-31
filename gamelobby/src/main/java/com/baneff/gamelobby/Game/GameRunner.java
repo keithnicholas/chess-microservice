@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.concurrent.CompletableFuture;
 
 @Component
-public class GameRunner {
+class GameRunner {
     private static final Logger LOGGER = LoggerFactory.getLogger(GameRunner.class);
 
     @Async("GameLobbyExecutor")

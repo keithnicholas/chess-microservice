@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.concurrent.Future;
 
 @Service
-public class GameService {
+class GameService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GameService.class);
 
