@@ -1,6 +1,8 @@
 package com.baneff.gamelobby.Game;
 
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,8 +25,8 @@ public class GameController {
     }
 
     @GetMapping("/{p1}/{p2}")
-    public Game createGame(@PathVariable String p1, @PathVariable String p2){
-        return gameService.createGame(p1,p2);
+    public ResponseEntity<?> createGame(@PathVariable String p1, @PathVariable String p2){
+        return new ResponseEntity<>(gameService.createGame(p1,p2), HttpStatus.OK) ;
     }
 
 }
